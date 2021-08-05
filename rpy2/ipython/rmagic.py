@@ -829,6 +829,8 @@ class RMagics(Magics):
             if result is not ri.NULL:
                 with localconverter(converter) as cv:
                     res = cv.rpy2py(result)
+                    if isinstance(res, rpy2.robjects.vectors.StrVector):
+                        res = str(res)
                 return res
 
 
